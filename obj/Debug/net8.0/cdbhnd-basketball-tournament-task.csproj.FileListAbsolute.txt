@@ -1,0 +1,15 @@
+C:\Users\dragan\Documents\GitHub\cdbhnd-basketball-tournament-task\bin\Debug\net8.0\cdbhnd-basketball-tournament-task.exe
+C:\Users\dragan\Documents\GitHub\cdbhnd-basketball-tournament-task\bin\Debug\net8.0\cdbhnd-basketball-tournament-task.deps.json
+C:\Users\dragan\Documents\GitHub\cdbhnd-basketball-tournament-task\bin\Debug\net8.0\cdbhnd-basketball-tournament-task.runtimeconfig.json
+C:\Users\dragan\Documents\GitHub\cdbhnd-basketball-tournament-task\bin\Debug\net8.0\cdbhnd-basketball-tournament-task.dll
+C:\Users\dragan\Documents\GitHub\cdbhnd-basketball-tournament-task\bin\Debug\net8.0\cdbhnd-basketball-tournament-task.pdb
+C:\Users\dragan\Documents\GitHub\cdbhnd-basketball-tournament-task\obj\Debug\net8.0\cdbhnd-basketball-tournament-task.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dragan\Documents\GitHub\cdbhnd-basketball-tournament-task\obj\Debug\net8.0\cdbhnd-basketball-tournament-task.AssemblyInfoInputs.cache
+C:\Users\dragan\Documents\GitHub\cdbhnd-basketball-tournament-task\obj\Debug\net8.0\cdbhnd-basketball-tournament-task.AssemblyInfo.cs
+C:\Users\dragan\Documents\GitHub\cdbhnd-basketball-tournament-task\obj\Debug\net8.0\cdbhnd-basketball-tournament-task.csproj.CoreCompileInputs.cache
+C:\Users\dragan\Documents\GitHub\cdbhnd-basketball-tournament-task\obj\Debug\net8.0\cdbhnd-basketball-tournament-task.sourcelink.json
+C:\Users\dragan\Documents\GitHub\cdbhnd-basketball-tournament-task\obj\Debug\net8.0\cdbhnd-basketball-tournament-task.dll
+C:\Users\dragan\Documents\GitHub\cdbhnd-basketball-tournament-task\obj\Debug\net8.0\refint\cdbhnd-basketball-tournament-task.dll
+C:\Users\dragan\Documents\GitHub\cdbhnd-basketball-tournament-task\obj\Debug\net8.0\cdbhnd-basketball-tournament-task.pdb
+C:\Users\dragan\Documents\GitHub\cdbhnd-basketball-tournament-task\obj\Debug\net8.0\cdbhnd-basketball-tournament-task.genruntimeconfig.cache
+C:\Users\dragan\Documents\GitHub\cdbhnd-basketball-tournament-task\obj\Debug\net8.0\ref\cdbhnd-basketball-tournament-task.dll
