@@ -1,68 +1,37 @@
 ﻿using static Team;
 using static Game;
 using static GameHistory;
-
-Team serbia = new Team("srbija","123",1);
-
-Team spain = new Team("spain","321",4);
+using static Group;
 
 
-Game game_simulation(Team team1, Team team2){
-    Random rand = new Random();
+List<Team> group_A = new List<Team>();
 
-    if (team1.fiba_ranking > team2.fiba_ranking){
-        team1.fiba_difference = (team1.fiba_ranking - team2.fiba_ranking) * (-1);
-        team2.fiba_difference = team1.fiba_ranking - team2.fiba_ranking;
-    } else {
-        team1.fiba_difference = team2.fiba_ranking - team1.fiba_ranking;
-        team2.fiba_difference = (team2.fiba_ranking - team1.fiba_ranking) * (-1);
-    }
+List<Team> group_B = new List<Team>();
 
-    int team1_score = 0;
-    int team1_broj_koseva = 0;
+List<Team> group_C = new List<Team>();
 
-    int team2_score = 0;
-    int team2_broj_koseva = 0;
-    
 
-    for (int i = 0; i < 48; i++){
-        int team1_roll = rand.Next(0, 100) + 0 + team1.fiba_difference;
-        int team2_roll = rand.Next(0, 100) + 0;
+group_A.Add(new Team("Kanada","CAN",7));
+group_A.Add(new Team("Australija","AUS",5));
+group_A.Add(new Team("Grčka","GRE",14));
+group_A.Add(new Team("Španija","ESP",2));
 
-        if (team1_roll >= 65){
-            team1_score += 3;
-            team1_broj_koseva++;
-        } else if(team1_roll >= 30){
-            team1_score += 2;
-            team1_broj_koseva++;
-        }
+group_B.Add(new Team("Nemačka","GER",3));
+group_B.Add(new Team("Francuska","FRA",9));
+group_B.Add(new Team("Brazil","BRA",12));
+group_B.Add(new Team("Japan","JPN",26));
 
-        if (team2_roll >= 65){
-            team2_score += 3;
-            team2_broj_koseva++;
-        } else if(team2_roll >= 30){
-            team2_score += 2;
-            team2_broj_koseva++;
-        }
-    }
-
-    int kos_razlika = Math.Abs(team1_broj_koseva-team2_broj_koseva);
-    string winner = team1_score > team2_score ? team1.name : team2.name;
-    string loser = team1_score > team2_score ? team2.name : team1.name;
-
-    return new Game(team1.name,team2.name,winner,loser,team1_score,team2_score,team1_broj_koseva,team2_broj_koseva,kos_razlika);  
-}
+group_C.Add(new Team("Sjedinjene Države","USA",1));
+group_C.Add(new Team("Srbija","SRB",4));
+group_C.Add(new Team("Južni Sudan","SSD",34));
+group_C.Add(new Team("Puerto Riko","PRI",16));
 
 
 GameHistory history = new GameHistory();
 
-Game a = game_simulation(serbia,spain);
-Game b = game_simulation(serbia,spain);
-Game c = game_simulation(serbia,spain);
+Group g = new Group(group_A,group_B,group_C,history);
 
-history.game_history.Add(a);
-history.game_history.Add(b);
-history.game_history.Add(c);
+g.play_group_games();
 
 
 void print_game(Game g){
@@ -77,8 +46,3 @@ void print_game(Game g){
                     + "TEAM 2 BROJ KOSEVA : " + g.team2_broj_koseva + "\n"
                     + "KOS RAZLIKA : " + g.kos_razlika + "\n");
 }
-
-
-for (int i = 0; i< 3 ; i++){
-    print_game(history.game_history[i]);
-} 
