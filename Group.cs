@@ -128,8 +128,10 @@ class Group{
 
         // the first 3 can be the same and the last 3 can be the same
 
-        bool krug1 = false;
-        int a,b,c;
+        bool krug = false;
+        int a = 0;
+        int b = 0;
+        int c = 0;
 
         if(g[0].bodovi == g[1].bodovi){
             if(g[1].bodovi == g[2].bodovi){
