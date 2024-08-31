@@ -105,15 +105,90 @@ class Group{
             Console.WriteLine(group_C[i].name + " : " + group_C[i].bodovi + "\n");
         }
         
+        group_ranks(group_A);
 
+        Console.WriteLine("-----------------------------------------------\n");
+        for(int i = 0;i < group_A.Count;i++){
+            Console.WriteLine(group_A[i].name + " : " + group_A[i].bodovi + "\n");
+        }
     }
 
 
-    /*public List<Team> group_ranks(){
+    private void group_ranks(List<Team> g){
+        Team tmp;
+        for(int i = 0; i <= g.Count - 2; i++){
+            for(int j = 0; j <= g.Count - 2; j++){
+                if(g[j].bodovi < g[j+1].bodovi){
+                    tmp = g[j+1];
+                    g[j+1] = g[j];
+                    g[j] = tmp;
+                }
+            }
+        }
+
+        // THIS IS FUCKING GARBAGE FIX IT
+
+        /*if(g[0].bodovi == g[1].bodovi){
+            if(g[1].bodovi == g[2].bodovi){
+                int team1_diff = 0;
+                int team2_diff = 0;
+                int team3_diff = 0;
+
+                if(history.match_winner(g[0],g[1]) == g[0].name){
+                    team1_diff += history.get_point_difference(g[0],g[1]);
+                } else {
+                    team2_diff += history.get_point_difference(g[0],g[1]);
+                }
+
+                if(history.match_winner(g[0],g[2]) == g[0].name){
+                    team1_diff += history.get_point_difference(g[0],g[2]);
+                } else {
+                    team3_diff += history.get_point_difference(g[0],g[2]);
+                }
+
+                if(history.match_winner(g[1],g[2]) == g[1].name){
+                    team2_diff += history.get_point_difference(g[1],g[2]);
+                } else {
+                    team3_diff += history.get_point_difference(g[1],g[2]);
+                }
+
+
+                if(team1_diff < team2_diff){
+                    if(team2_diff < team3_diff){
+                        tmp = g[0];
+                        g[0] = g[2];
+                        g[2] = tmp;
+                    } else {
+                        tmp = g[0];
+                        g[0] = g[1];
+                        g[1] = tmp;
+                    }
+                } else {
+                    if(team2_diff < team3_diff){
+                        tmp = g[1];
+                        g[1] = g[2];
+                        g[2] = tmp;
+                    }
+                }
+            }
+        } else if (g[0].bodovi == g[1].bodovi){
+            if(history.match_winner(g[0],g[1]) == g[1].name){
+                tmp = g[0];
+                g[0] = g[1];
+                g[1] = tmp;
+            }
+        } else if (g[2].bodovi == g[3].bodovi){
+            if(history.match_winner(g[2],g[3]) == g[3].name){
+                tmp = g[2];
+                g[2] = g[3];
+                g[3] = tmp;
+            }
+        }*/
+    }
+
+    /*public List<Team> rank_list(){
 
     }*/
-
-
 
 
 }

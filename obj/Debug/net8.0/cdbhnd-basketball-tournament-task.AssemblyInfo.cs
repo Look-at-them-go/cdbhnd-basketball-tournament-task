@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("cdbhnd-basketball-tournament-task")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1ba79f38cf090109c657f834ccf7ecbf30cf44f7")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+02e9ed43186fc7d139a42d328f5a6e5ad304ff9b")]
 [assembly: System.Reflection.AssemblyProductAttribute("cdbhnd-basketball-tournament-task")]
 [assembly: System.Reflection.AssemblyTitleAttribute("cdbhnd-basketball-tournament-task")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

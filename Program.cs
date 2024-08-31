@@ -34,6 +34,7 @@ Group g = new Group(group_A,group_B,group_C,history);
 g.play_group_games();
 
 
+
 void print_game(Game g){
     Console.WriteLine("GAMES RESULT\n");
     Console.WriteLine("TEAM 1 : " + g.team1 + "\n"
