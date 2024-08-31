@@ -128,63 +128,70 @@ class Group{
 
         // the first 3 can be the same and the last 3 can be the same
 
-        bool krug = false;
+        bool krug1 = false;
+        int a,b,c;
 
         if(g[0].bodovi == g[1].bodovi){
             if(g[1].bodovi == g[2].bodovi){
                 krug = true;
+                a=0;
+                b=1;
+                c=2;
             }
         }
         if(g[1].bodovi == g[2].bodovi){
             if(g[2].bodovi == g[3].bodovi){
                 krug = true;
+                a=1;
+                b=2;
+                c=3;
             }
         }
         if(krug){
             int team1_diff = 0;
             int team2_diff = 0;
             int team3_diff = 0;
-            if(history.match_winner(g[0],g[1]) == g[0].name){
-                team1_diff += history.get_point_difference(g[0],g[1]);
+            if(history.match_winner(g[a],g[b]) == g[a].name){
+                team1_diff += history.get_point_difference(g[a],g[b]);
             } else {
-                team2_diff += history.get_point_difference(g[0],g[1]);
+                team2_diff += history.get_point_difference(g[a],g[b]);
             }
 
-            if(history.match_winner(g[0],g[2]) == g[0].name){
-                team1_diff += history.get_point_difference(g[0],g[2]);
+            if(history.match_winner(g[a],g[c]) == g[a].name){
+                team1_diff += history.get_point_difference(g[a],g[c]);
             } else {
-                team3_diff += history.get_point_difference(g[0],g[2]);
+                team3_diff += history.get_point_difference(g[a],g[c]);
             }
 
-            if(history.match_winner(g[1],g[2]) == g[1].name){
-                team2_diff += history.get_point_difference(g[1],g[2]);
+            if(history.match_winner(g[b],g[c]) == g[b].name){
+                team2_diff += history.get_point_difference(g[b],g[c]);
             } else {
-                team3_diff += history.get_point_difference(g[1],g[2]);
+                team3_diff += history.get_point_difference(g[b],g[c]);
             }
 
             if(team1_diff < team2_diff){
                 if(team2_diff < team3_diff){
-                    tmp = g[0];
-                    g[0] = g[2];
-                    g[2] = tmp;
+                    tmp = g[a];
+                    g[a] = g[c];
+                    g[c] = tmp;
                 } else {
-                    tmp = g[0];
-                    g[0] = g[1];
-                    g[1] = tmp;
+                    tmp = g[a];
+                    g[a] = g[b];
+                    g[b] = tmp;
                 }
             } else {
                 if(team1_diff < team3_diff){
-                    tmp = g[0];
-                    g[0] = g[2];
-                    g[2] = tmp;
+                    tmp = g[a];
+                    g[a] = g[c];
+                    g[c] = tmp;
 
-                    tmp = g[1];
-                    g[1] = g[2];
-                    g[2] = tmp;                    
+                    tmp = g[b];
+                    g[b] = g[c];
+                    g[c] = tmp;                    
                 } else if(team2_diff < team3_diff){
-                    tmp = g[1];
-                    g[1] = g[2];
-                    g[2] = tmp;
+                    tmp = g[b];
+                    g[b] = g[c];
+                    g[c] = tmp;
                 }
             }
             
