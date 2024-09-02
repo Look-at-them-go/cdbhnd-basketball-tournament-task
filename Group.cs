@@ -83,15 +83,20 @@ class Group{
                 // loser points allocation
 
                 if(group_A[j].name == history.game_history[i].loser){
-                    group_A[j].bodovi++;
+                    if(history.game_history[i].surrender == false){
+                        group_A[j].bodovi++;
+                    }
                 }
 
                 if(group_B[j].name == history.game_history[i].loser){
-                    group_B[j].bodovi++;
+                    if(history.game_history[i].surrender == false){
+                        group_B[j].bodovi++;
+                    }
                 }
-
                 if(group_C[j].name == history.game_history[i].loser){
-                    group_C[j].bodovi++;
+                    if(history.game_history[i].surrender == false){
+                        group_C[j].bodovi++;
+                    }
                 }
             }
         }

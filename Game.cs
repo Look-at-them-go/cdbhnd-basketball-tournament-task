@@ -10,6 +10,7 @@ public record Game{
     public int team2_broj_koseva {get; init;}
     public int kos_razlika {get; init;}
 
+    public bool surrender {get; init;}
 
     public Game(string _team1, 
                 string _team2, 
@@ -19,7 +20,8 @@ public record Game{
                 int _team2_points,
                 int _team1_broj_koseva,
                 int _team2_broj_koseva,
-                int _kos_razlika)
+                int _kos_razlika,
+                bool _surrender)
     {
         this.team1 = _team1;
         this.team2 = _team2;
@@ -30,7 +32,7 @@ public record Game{
         this.team1_broj_koseva = _team1_broj_koseva;
         this.team2_broj_koseva = _team2_broj_koseva;
         this.kos_razlika = _kos_razlika;
-
+        this.surrender = _surrender;
     }
     
 

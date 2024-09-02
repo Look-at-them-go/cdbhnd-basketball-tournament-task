@@ -94,4 +94,15 @@ class GameHistory{
 
         return primljeni_kosevi;
     }
+
+    public Game get_recent_game(Team t){
+        Game g;
+        for(int i = game_history.Count - 1 ; i >= 0; i--){
+            if(game_history[i].team1 == t.name || game_history[i].team2 == t.name){
+                return g = game_history[i];
+            }
+        }
+        return null;
+    }
+
 }
