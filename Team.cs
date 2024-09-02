@@ -45,8 +45,6 @@ class Team {
         } else if (last_game.team2_broj_koseva > 30) {
             modifier += 3;
         }
-
-        Console.WriteLine(modifier);
         this.forma = modifier;
     }
 
