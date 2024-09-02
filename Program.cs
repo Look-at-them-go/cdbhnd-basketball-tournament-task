@@ -2,7 +2,7 @@
 using static Game;
 using static GameHistory;
 using static Group;
-
+using static Elimination;
 
 List<Team> group_A = new List<Team>();
 
@@ -40,17 +40,10 @@ for(int i = 0; i < g.rankings.Count; i++){
     Console.WriteLine((i+1) + ". " + g.rankings[i].name);
 }
 
+Console.WriteLine("\n-----------------------------------------------\n");
 
-void print_game(Game g){
-    Console.WriteLine("GAMES RESULT\n");
-    Console.WriteLine("TEAM 1 : " + g.team1 + "\n"
-                    + "TEAM 2 : " + g.team2 + "\n"
-                    + "WINNER : " + g.winner + "\n"
-                    + "LOSER : " + g.loser + "\n"
-                    + "TEAM 1 POINTS : " + g.team1_points + "\n"
-                    + "TEAM 2 POINTS : " + g.team2_points + "\n"
-                    + "TEAM 1 BROJ KOSEVA : " + g.team1_broj_koseva + "\n"
-                    + "TEAM 2 BROJ KOSEVA : " + g.team2_broj_koseva + "\n"
-                    + "KOS RAZLIKA : " + g.kos_razlika + "\n");
-}
+Elimination e = new Elimination(g.rankings,history);
+
+e.play_elimination();
+
 

@@ -23,7 +23,7 @@ class Group{
 
     public void play_group_games(){
         
-        Console.WriteLine("Grupna faza I kolo: \n");
+        Console.WriteLine("\nGrupna faza I kolo: \n");
         Console.WriteLine("    Grupa A:\n");
         history.game_history.Add(Simulation.game_simulation(group_A[0],group_A[2]));
         history.game_history.Add(Simulation.game_simulation(group_A[1],group_A[3]));
@@ -101,7 +101,7 @@ class Group{
         group_ranks(group_B);
         group_ranks(group_C);
 
-
+        Console.WriteLine("-----------------------------------------------\n");
         Console.WriteLine("Konacan plasman u grupama:");
         Console.WriteLine("    Grupa A (Ime - pobede/porazi/bodovi/postignuti koševi/primljeni koševi/koš razlika):");
         for(int i = 0; i < group_A.Count; i++){
@@ -151,7 +151,7 @@ class Group{
                                 + "/" + history.get_kos_razlika(group_C[i]));
         }
 
-        Console.WriteLine("\n");
+        Console.WriteLine("\n-----------------------------------------------\n");
 
     }
 
