@@ -8,6 +8,8 @@ class Group{
     public List<Team> group_B { get; set; }
     public List<Team> group_C { get; set; }
 
+    public List<Team> rankings { get; set; }
+
     public GameHistory history { get; set; }
 
 
@@ -16,6 +18,7 @@ class Group{
         this.group_B = _group_B;
         this.group_C = _group_C;
         this.history = _history;
+        this.rankings = new List<Team>();
     }
 
     public void play_group_games(){
@@ -99,17 +102,56 @@ class Group{
         group_ranks(group_C);
 
 
-        for(int i = 0;i < group_A.Count;i++){
-            Console.WriteLine(group_A[i].name + " : " + group_A[i].bodovi + "\n");
+        Console.WriteLine("Konacan plasman u grupama:");
+        Console.WriteLine("    Grupa A (Ime - pobede/porazi/bodovi/postignuti koševi/primljeni koševi/koš razlika):");
+        for(int i = 0; i < group_A.Count; i++){
+            string spacing = "";
+            for(int j = 0; j < (20 - (group_A[i].name).Length) ; j++){
+                spacing += " ";
+            }
+            Console.WriteLine("        " + (i+1) +". " + group_A[i].name 
+                                + spacing 
+                                + history.number_of_wins(group_A[i]) 
+                                + "/" + history.number_of_losses(group_A[i])
+                                + "/" + group_A[i].bodovi
+                                + "/" + history.get_broj_koseva(group_A[i])
+                                + "/" + history.primljeni_kosevi(group_A[i])
+                                + "/" + history.get_kos_razlika(group_A[i]));
         }
-        Console.WriteLine("-----------------------------------------------\n");
-        for(int i = 0;i < group_B.Count;i++){
-            Console.WriteLine(group_B[i].name + " : " + group_B[i].bodovi + "\n");
+
+        Console.WriteLine("    Grupa B (Ime - pobede/porazi/bodovi/postignuti koševi/primljeni koševi/koš razlika):");
+        for(int i = 0; i < group_B.Count; i++){
+            string spacing = "";
+            for(int j = 0; j < (20 - (group_B[i].name).Length) ; j++){
+                spacing += " ";
+            }
+            Console.WriteLine("        " + (i+1) +". " + group_B[i].name 
+                                + spacing 
+                                + history.number_of_wins(group_B[i]) 
+                                + "/" + history.number_of_losses(group_B[i])
+                                + "/" + group_B[i].bodovi
+                                + "/" + history.get_broj_koseva(group_B[i])
+                                + "/" + history.primljeni_kosevi(group_B[i])
+                                + "/" + history.get_kos_razlika(group_B[i]));
         }
-        Console.WriteLine("-----------------------------------------------\n");
-        for(int i = 0;i < group_C.Count;i++){
-            Console.WriteLine(group_C[i].name + " : " + group_C[i].bodovi + "\n");
+
+        Console.WriteLine("    Grupa C (Ime - pobede/porazi/bodovi/postignuti koševi/primljeni koševi/koš razlika):");
+        for(int i = 0; i < group_C.Count; i++){
+            string spacing = "";
+            for(int j = 0; j < (20 - (group_C[i].name).Length) ; j++){
+                spacing += " ";
+            }
+            Console.WriteLine("        " + (i+1) +". " + group_C[i].name 
+                                +  spacing
+                                + history.number_of_wins(group_C[i]) 
+                                + "/" + history.number_of_losses(group_C[i])
+                                + "/" + group_C[i].bodovi
+                                + "/" + history.get_broj_koseva(group_C[i])
+                                + "/" + history.primljeni_kosevi(group_C[i])
+                                + "/" + history.get_kos_razlika(group_C[i]));
         }
+
+        Console.WriteLine("\n");
 
     }
 
@@ -212,9 +254,245 @@ class Group{
         }
     }
 
-    /*public List<Team> rank_list(){
 
-    }*/
+    private List<Team> rank(Team a, Team b, Team c){
+        List<Team> rank = new List<Team>();
+
+        rank.Add(a);
+        rank.Add(b);
+        rank.Add(c);
+
+        int a_razlika = history.get_kos_razlika(a);
+        int b_razlika = history.get_kos_razlika(b);
+        int c_razlika = history.get_kos_razlika(c);
+
+        int a_broj_koseva = history.get_broj_koseva(a);
+        int b_broj_koseva = history.get_broj_koseva(b);
+        int c_broj_koseva = history.get_broj_koseva(c);
+
+        Team tmp;
+
+        if(a.bodovi == b.bodovi && b.bodovi == c.bodovi){
+            if(a_razlika == b_razlika && b_razlika == c_razlika){
+                for(int i = 0; i <= rank.Count - 2; i++){
+                    for(int j = 0; j <= rank.Count - 2; j++){
+                        if(history.get_broj_koseva(rank[j]) < history.get_broj_koseva(rank[j+1])){
+                            tmp = rank[j+1];
+                            rank[j+1] = rank[j];
+                            rank[j] = tmp;
+                        }
+                    }
+                }
+            } else if(a_razlika == b_razlika){
+                if(c_razlika > a_razlika){
+                    rank[0] = c;
+                    if(a_broj_koseva > b_broj_koseva){
+                        rank[1] = a;
+                        rank[2] = b;
+                    } else {
+                        rank[1] = b;
+                        rank[2] = a;
+                    }
+                } else {
+                    rank[2] = c;
+                    if(a_broj_koseva > b_broj_koseva){
+                        rank[0] = a;
+                        rank[1] = b;
+                    } else {
+                        rank[0] = b;
+                        rank[1] = a;
+                    }
+                }
+                
+            } else if(b_razlika == c_razlika){
+                if(a_razlika > b_razlika){
+                    rank[0] = a;
+                    if(b_broj_koseva > c_broj_koseva){
+                        rank[1] = b;
+                        rank[2] = c;
+                    } else {
+                        rank[1] = c;
+                        rank[2] = b;
+                    }
+                } else {
+                    rank[2] = a;
+                    if(b_broj_koseva > c_broj_koseva){
+                        rank[0] = b;
+                        rank[1] = c;
+                    } else {
+                        rank[0] = c;
+                        rank[1] = b;
+                    }
+                }
+            } else if(a_razlika == c_razlika){
+                if(b_razlika > a_razlika){
+                    rank[0] = b;
+                    if(a_broj_koseva > c_broj_koseva){
+                        rank[1] = a;
+                        rank[2] = c;
+                    } else {
+                        rank[1] = c;
+                        rank[2] = a;
+                    }
+                } else {
+                    rank[2] = b;
+                    if(a_broj_koseva > c_broj_koseva){
+                        rank[0] = a;
+                        rank[1] = c;
+                    } else {
+                        rank[0] = c;
+                        rank[1] = a;
+                    }
+                }
+            } else {
+                for(int i = 0; i <= rank.Count - 2; i++){
+                    for(int j = 0; j <= rank.Count - 2; j++){
+                        if(history.get_kos_razlika(rank[j]) < history.get_kos_razlika(rank[j+1])){
+                            tmp = rank[j+1];
+                            rank[j+1] = rank[j];
+                            rank[j] = tmp;
+                        }
+                    }
+                }
+            }
+        } else if (a.bodovi == b.bodovi){
+            if(c.bodovi > a.bodovi){
+                rank[0] = c;
+                if(a_razlika == b_razlika){
+                    if(a_broj_koseva > b_broj_koseva){
+                        rank[1] = a;
+                        rank[2] = b;
+                    } else {
+                        rank[1] = b;
+                        rank[2] = a;
+                    }
+                } else if(a_razlika > b_razlika){
+                    rank[1] = a;
+                    rank[2] = b;
+                } else {
+                    rank[1] = b;
+                    rank[2] = a;
+                }
+            } else {
+                rank[2] = c;
+                if(a_razlika == b_razlika){
+                    if(a_broj_koseva > b_broj_koseva){
+                        rank[0] = a;
+                        rank[1] = b;
+                    } else {
+                        rank[0] = b;
+                        rank[1] = a;
+                    }
+                } else if(a_razlika > b_razlika){
+                    rank[0] = a;
+                    rank[1] = b;
+                } else {
+                    rank[0] = b;
+                    rank[1] = a;
+                }
+            }
+        } else if (b.bodovi == c.bodovi){
+            if(a.bodovi > b.bodovi){
+                rank[0] = a;
+                if(b_razlika == c_razlika){
+                    if(b_broj_koseva > c_broj_koseva){
+                        rank[1] = b;
+                        rank[2] = c;
+                    } else {
+                        rank[1] = c;
+                        rank[2] = b;
+                    }
+                } else if(b_razlika > c_razlika){
+                    rank[1] = b;
+                    rank[2] = c;
+                } else {
+                    rank[1] = c;
+                    rank[2] = b;
+                }
+            } else {
+                rank[2] = a;
+                if(b_razlika == c_razlika){
+                    if(b_broj_koseva > c_broj_koseva){
+                        rank[0] = b;
+                        rank[1] = c;
+                    } else {
+                        rank[0] = c;
+                        rank[1] = b;
+                    }
+                } else if(b_razlika > c_razlika){
+                    rank[0] = b;
+                    rank[1] = c;
+                } else {
+                    rank[0] = c;
+                    rank[1] = b;
+                }
+            }
+        } else if (a.bodovi == c.bodovi){
+            if(b.bodovi > a.bodovi){
+                rank[0] = b;
+                if(a_razlika == c_razlika){
+                    if(a_broj_koseva > c_broj_koseva){
+                        rank[1] = a;
+                        rank[2] = c;
+                    } else {
+                        rank[1] = c;
+                        rank[2] = a;
+                    }
+                } else if(a_razlika > c_razlika){
+                    rank[1] = a;
+                    rank[2] = c;
+                } else {
+                    rank[1] = c;
+                    rank[2] = a;
+                }
+            } else {
+                rank[2] = b;
+                if(a_razlika == c_razlika){
+                    if(a_broj_koseva > c_broj_koseva){
+                        rank[0] = a;
+                        rank[1] = c;
+                    } else {
+                        rank[0] = c;
+                        rank[1] = a;
+                    }
+                } else if(a_razlika > c_razlika){
+                    rank[0] = a;
+                    rank[1] = c;
+                } else {
+                    rank[0] = c;
+                    rank[1] = a;
+                }
+            }
+        } else {
+            for(int i = 0; i <= rank.Count - 2; i++){
+                for(int j = 0; j <= rank.Count - 2; j++){
+                    if(rank[j].bodovi < rank[j+1].bodovi){
+                        tmp = rank[j+1];
+                        rank[j+1] = rank[j];
+                        rank[j] = tmp;
+                    }
+                }
+            }
+        }
+        
+        
+        return rank;
+    }
+
+    public void rank_list(){
+        List<Team> prvoplasirani = rank(group_A[0], group_B[0], group_C[0]);
+        List<Team> drugoplasirani = rank(group_A[1], group_B[1], group_C[1]);
+        List<Team> treceplasirani = rank(group_A[2], group_B[2], group_C[2]);
+
+        this.rankings = this.rankings.Concat(prvoplasirani).ToList();
+        this.rankings = this.rankings.Concat(drugoplasirani).ToList();
+        this.rankings = this.rankings.Concat(treceplasirani).ToList();
+
+        this.rankings.RemoveAt(this.rankings.Count - 1);
+
+    }
 
 
 }
+
+
